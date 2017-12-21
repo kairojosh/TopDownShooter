@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		if (gameObject.GetComponent<Rigidbody> ().velocity.magnitude < 25f) {
+		if ((gameObject.GetComponent<Rigidbody> ().velocity).magnitude < 25f) {
 
 			Destroy (gameObject);
 		}

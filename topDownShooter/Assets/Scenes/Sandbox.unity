@@ -495,6 +495,11 @@ Prefab:
       propertyPath: ReloadSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114908841575389440, guid: 95a7a390797aebf4f9335f2396a8c35e,
+        type: 2}
+      propertyPath: Recoil
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 95a7a390797aebf4f9335f2396a8c35e, type: 2}

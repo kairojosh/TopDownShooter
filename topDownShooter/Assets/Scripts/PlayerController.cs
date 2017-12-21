@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviour {
 
 		if ((Input.GetKeyDown (KeyCode.Mouse0)) && (Time.time >= TimeStamp)) {
 			Fire ();
-			controller.velocity = (Vector3.forward * -1) * Recoil;
-			controller.attachedRigidbody.AddForce ((Vector3.forward * -1) * Recoil) ;
+			controller.Move((transform.forward * -1) * Recoil);
+		
 		
 		}
 
