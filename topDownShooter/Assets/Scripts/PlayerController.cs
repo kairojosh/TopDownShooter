@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
 	//Handling
+	public float Recoil = 1f;
 	public float ReloadSpeed = 1f;
 	public float rotationSpeed = 450f;
 	private float speed = 5f;
@@ -36,9 +37,12 @@ public class PlayerController : MonoBehaviour {
 		
 			bullet.GetComponent<Rigidbody> ().velocity = bulletSpawn.transform.forward * bulletVelocity;
 
+
+		 
+
 		Destroy (bullet, bulletDuration);
 		CoolDown.texture = Resources.Load ("10_Empty") as Texture;
-		 TimeStamp = Time.time + ReloadSpeed;
+		TimeStamp = Time.time + ReloadSpeed;
 	}
 	// Use this for initialization
 	void Start () {
@@ -73,10 +77,13 @@ public class PlayerController : MonoBehaviour {
         controller.Move(motion * Time.deltaTime * speed);
         
 		//Debug.Log(speed);
-		Debug.Log (-(TimeStamp - Time.time)/ReloadSpeed);
+		//Debug.Log (-(TimeStamp - Time.time)/ReloadSpeed);
 
 		if ((Input.GetKeyDown (KeyCode.Mouse0)) && (Time.time >= TimeStamp)) {
 			Fire ();
+			controller.velocity = (Vector3.forward * -1) * Recoil;
+			controller.attachedRigidbody.AddForce ((Vector3.forward * -1) * Recoil) ;
+		
 		}
 
 
