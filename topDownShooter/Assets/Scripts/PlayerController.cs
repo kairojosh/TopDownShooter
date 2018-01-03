@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -87,39 +87,39 @@ public class PlayerController : MonoBehaviour {
 		}
 
 
-		float TimeCalc = (TimeStamp - Time.time) * ReloadSpeed;
+		float TimeCalc = TimeStamp - Time.time;
 
 			
 
 
 
 
-		if ((TimeCalc) > 0.9) {
+		if ((TimeCalc) > (0.9  * ReloadSpeed) ) {
 			CoolDown.texture = Resources.Load ("10_Empty") as Texture;
 		}
-		else if((TimeCalc ) >0.8) {
+		else if((TimeCalc ) >(0.8 * ReloadSpeed)) {
 
 			CoolDown.texture = Resources.Load ("9") as Texture;
 		}
-		else if((TimeCalc) > 0.7) {
+		else if((TimeCalc) > (0.7  * ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("8") as Texture;
 		}
-		else if((TimeCalc) > 0.6) {
+		else if((TimeCalc) > (0.6* ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("7") as Texture;
 		}
-		else if((TimeCalc) > 0.5) {
+		else if((TimeCalc) > (0.5* ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("6") as Texture;
 		}
-		else if((TimeCalc) > 0.4) {
+		else if((TimeCalc) > (0.4* ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("5") as Texture;
 		}
-		else if((TimeCalc) > 0.3) {
+		else if((TimeCalc) > (0.3* ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("4") as Texture;
 		}
-		else if((TimeCalc) > 0.2 ) {
+		else if((TimeCalc) > (0.2 * ReloadSpeed) ) {
 			CoolDown.texture = Resources.Load ("3") as Texture;
 		}
-		else if((TimeCalc) > 0.1) {
+		else if((TimeCalc) > (0.1 * ReloadSpeed)) {
 			CoolDown.texture = Resources.Load ("2") as Texture;
 		}
 		else {
