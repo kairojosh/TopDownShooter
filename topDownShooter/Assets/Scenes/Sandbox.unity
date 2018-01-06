@@ -693,7 +693,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gridWorldSize: {x: 30, y: 30}
-  nodeDiameter: 0.1
+  nodeDiameter: 0.25
 --- !u!4 &981832340
 Transform:
   m_ObjectHideFlags: 0

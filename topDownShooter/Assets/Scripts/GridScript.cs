@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GridScript : MonoBehaviour {
 
+	//public Transform player;
 	public LayerMask outOfBoundsMask;
 	public Vector2 gridWorldSize;
 	public float nodeDiameter;
@@ -19,6 +20,25 @@ public class GridScript : MonoBehaviour {
 		GridInstantiate ();
 
 	}
+
+	public Node PositionConvertNode(Vector3 position) {
+
+		//Calculates how far along each co-ordinate the postion is so it can be converted into the respective grid
+		//Finds how far along with a scale of 0 to 1
+		float calcX = (position.x - transform.position.x + gridWorldSize.x / 2) / gridWorldSize.x;
+		float calcY = (position.z - transform.position.z + gridWorldSize.y / 2) / gridWorldSize.y;
+		calcX = Mathf.Clamp01 (calcX);
+		calcY = Mathf.Clamp01 (calcY);
+
+
+		int valueX = Mathf.RoundToInt((gridAmountX - 1) * calcX);
+		int valueY = Mathf.RoundToInt((gridAmountY - 1) * calcY);
+		return grid [valueX, valueY];
+
+
+
+	}
+
 
 	void GridInstantiate() {
 		//Creates the grid based upon calculations done previously in the start method
@@ -42,13 +62,21 @@ public class GridScript : MonoBehaviour {
 	}
 
 
+
+
 	void OnDrawGizmos() {
 		Gizmos.DrawWireCube (transform.position, new Vector3 (gridWorldSize.x, 1, gridWorldSize.y));
 		if (grid != null) {
+		//	Node playerNode = PositionConvertNode (player.position);
+
 			foreach (Node i in grid) {
 
 				// ? if is true : if is not true
-				Gizmos.color = (i.inBounds) ? Color.white : Color.red;
+				Gizmos.color = (i.inBounds) ? Color.black : Color.red;
+			//	if (playerNode == i) {
+			//		Gizmos.color = Color.white;
+			//	}
+
 
 				Gizmos.DrawWireCube (i.position, Vector3.one * (nodeDiameter -.01f) );
 
