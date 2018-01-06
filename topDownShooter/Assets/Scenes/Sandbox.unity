@@ -527,7 +527,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 881566876}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 4.4099674, y: -1.3075881, z: -4.855755}
+  m_LocalPosition: {x: 8.12, y: 7.53, z: -11.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1522909121}
@@ -672,7 +672,7 @@ GameObject:
   - component: {fileID: 981832340}
   - component: {fileID: 981832339}
   m_Layer: 0
-  m_Name: Pathfinding Center
+  m_Name: Pathfinding Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,9 +691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outOfBoundsMask:
     serializedVersion: 2
-    m_Bits: 0
-  gridWorldSize: {x: 0, y: 0}
-  nodeSize: 0
+    m_Bits: 256
+  gridWorldSize: {x: 30, y: 30}
+  nodeDiameter: 0.1
 --- !u!4 &981832340
 Transform:
   m_ObjectHideFlags: 0

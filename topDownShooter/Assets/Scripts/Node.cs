@@ -10,5 +10,12 @@ public class Node {
 	public Vector3 parentPosition;
 	public int gCost, hCost, fCost;
 
+	//Instantiater Method, underscore before the identifier is convention, example of encapsulation
+	public Node(bool _inBounds, Vector3 _position) {
+		inBounds = _inBounds;
+		position = _position;
+
+	}
+
 
 }
