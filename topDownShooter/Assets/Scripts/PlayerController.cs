@@ -9,50 +9,47 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-	//Reference
-
+	//References
 	public RawImage CoolDown;
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
+
 	//Handling
 	public float Recoil = 1f;
 	public float ReloadSpeed = 1f;
 	public float rotationSpeed = 450f;
-	private float speed = 5f;
+
 	public float bulletVelocity = 6f;
 	public float bulletDuration = 2f;
     public float BackwardsVelocity = 2f;
     public float ForwardsVelocity = 6f;
     public float SidewaysVelocity = 4f;
-	private float TimeStamp;
+
     
-	//System Variables
-	private Quaternion targetRotation; private CharacterController controller;
-
+	//Local Variables
+	private Quaternion targetRotation; 
+	private CharacterController controller;
+	private float TimeStamp;
+	private float speed = 5f;
 	void Fire(){
-		var bullet = (GameObject)Instantiate(
-			bulletPrefab,
-			bulletSpawn.position,
-			bulletSpawn.rotation);
-		
-			bullet.GetComponent<Rigidbody> ().velocity = bulletSpawn.transform.forward * bulletVelocity;
-
-
-		 
-
+		var bullet = (GameObject)Instantiate( bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+		//Changing velocity as opposed to the tranform of the object takes into account collisions,
+		//where the transform component does notbv n
+		bullet.GetComponent<Rigidbody> ().velocity = bulletSpawn.transform.forward * bulletVelocity;
 		Destroy (bullet, bulletDuration);
 		CoolDown.texture = Resources.Load ("10_Empty") as Texture;
+		//When it's time to start firing again
 		TimeStamp = Time.time + ReloadSpeed;
 	}
-	// Use this for initialization
 	void Start () {
-
-		 
-
-		controller = GetComponent<CharacterController>();TimeStamp = Time.time;	}
+		//Creates a reference the the character controller controller so that methods are easily used
+		controller = GetComponent<CharacterController>();
+		TimeStamp = Time.time;
+	}
 
 
 	void FixedUpdate () {
+		
 		Vector3 movement = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - (transform.position);
 		difference.Normalize ();
@@ -60,8 +57,7 @@ public class PlayerController : MonoBehaviour {
 		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
 		Vector3 motion = movement.normalized;
 
-        //Debug.Log(Vector3.Dot( transform.forward, motion));
-        //Debug.Log(motion);
+     	//Determines if the player is moving backwards, sideways or forwards
         if (Vector3.Dot(transform.forward, motion) > .4)
         {
             speed = ForwardsVelocity;
@@ -76,24 +72,14 @@ public class PlayerController : MonoBehaviour {
         }
         controller.Move(motion * Time.deltaTime * speed);
         
-		//Debug.Log(speed);
-		//Debug.Log (-(TimeStamp - Time.time)/ReloadSpeed);
-
+		//Detects whether the player is shooting and if the cooldown has passed
 		if ((Input.GetKeyDown (KeyCode.Mouse0)) && (Time.time >= TimeStamp)) {
 			Fire ();
 			controller.Move((transform.forward * -1) * Recoil);
-		
-		
 		}
 
-
+		//Laborious code to change the texture of the UI 
 		float TimeCalc = TimeStamp - Time.time;
-
-			
-
-
-
-
 		if ((TimeCalc) > (0.9  * ReloadSpeed) ) {
 			CoolDown.texture = Resources.Load ("10_Empty") as Texture;
 		}
@@ -126,8 +112,6 @@ public class PlayerController : MonoBehaviour {
 			CoolDown.texture = Resources.Load ("1_Full") as Texture;
 		}
 	
-		
-
 
 	}
 }

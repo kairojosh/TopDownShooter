@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
+	public LayerMask outOfBoundsMask;
 
 	// Use this for initialization
 	void Start () {
@@ -11,10 +12,11 @@ public class BulletScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if ((gameObject.GetComponent<Rigidbody> ().velocity).magnitude < 1f) {
-
+		//Destroys bullet if it collides with any object associated with the OutOfBounds Mask
+		if (Physics.CheckSphere (gameObject.transform.position, gameObject.transform.lossyScale.x, outOfBoundsMask)) {
 			Destroy (gameObject);
 		}
+
+		}
 	}
-}
+
