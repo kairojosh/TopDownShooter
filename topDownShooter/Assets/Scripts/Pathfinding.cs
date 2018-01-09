@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+
+
 }

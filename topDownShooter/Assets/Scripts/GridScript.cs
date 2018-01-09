@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GridScript : MonoBehaviour {
 
-	//public Transform player;
+	public Transform player;
 	public LayerMask outOfBoundsMask;
 	public Vector2 gridWorldSize;
 	public float nodeDiameter;
@@ -67,15 +67,15 @@ public class GridScript : MonoBehaviour {
 	void OnDrawGizmos() {
 		Gizmos.DrawWireCube (transform.position, new Vector3 (gridWorldSize.x, 1, gridWorldSize.y));
 		if (grid != null) {
-		//	Node playerNode = PositionConvertNode (player.position);
+			Node playerNode = PositionConvertNode (player.position);
 
 			foreach (Node i in grid) {
 
 				// ? if is true : if is not true
 				Gizmos.color = (i.inBounds) ? Color.black : Color.red;
-			//	if (playerNode == i) {
-			//		Gizmos.color = Color.white;
-			//	}
+				if (playerNode == i) {
+					Gizmos.color = Color.white;
+				}
 
 
 				Gizmos.DrawWireCube (i.position, Vector3.one * (nodeDiameter -.01f) );
