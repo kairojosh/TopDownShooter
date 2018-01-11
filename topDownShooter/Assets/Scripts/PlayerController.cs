@@ -52,7 +52,8 @@ public class PlayerController : MonoBehaviour {
 		
 		Vector3 movement = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxisRaw ("Vertical"));
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - (transform.position);
-		difference.Normalize ();
+     
+        difference.Normalize ();
 		targetRotation = Quaternion.LookRotation (difference);
 		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
 		Vector3 motion = movement.normalized;
