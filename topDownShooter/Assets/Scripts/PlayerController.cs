@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 		targetRotation = Quaternion.LookRotation (difference);
 		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, rotationSpeed * Time.deltaTime);
 		Vector3 motion = movement.normalized;
-
+       
      	//Determines if the player is moving backwards, sideways or forwards
         if (Vector3.Dot(transform.forward, motion) > .4)
         {

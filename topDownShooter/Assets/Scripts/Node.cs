@@ -4,6 +4,7 @@ using UnityEngine;
 
 //This class doe not inherit from monobehaviour
 public class Node {
+    
 
 	public bool inBounds;
 	public int gridX, gridY, parentX, parentY;
@@ -16,6 +17,9 @@ public class Node {
 		}
 
 	}
+
+
+
 	//Instantiater Method, underscore before the identifier is convention, example of encapsulation
 	public Node(bool _inBounds, Vector3 _position, int _gridX, int _gridY) {
 		inBounds = _inBounds;
