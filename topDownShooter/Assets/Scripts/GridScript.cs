@@ -27,14 +27,15 @@ public class GridScript : MonoBehaviour {
 	public List<Node> GetAdjacent(Node node){
 		List<Node> neighbours = new List<Node> ();
 
-		//Get nodes around the 3x3 grid, ignoring the node itself, and checks if the node exists
-		for (int x = -1; x < 1; x++) {
-			for (int y = -1; y < 1; y++) {
+		//Get nodes around the 3x3 grid, ignoring the node itself, and checks if the node exists, I came into an error here where < instead <= so adjacent nodes only found bottom left
+		for (int x = -1; x <= 1; x++) {
+			for (int y = -1; y <= 1; y++) {
 				if (x == 0 && y == 0) 
 					continue;
 				//Confirms whether the value is inside the grid or not
 				int confirmX = node.gridX + x;
 				int confirmY = node.gridY + y;
+      
 				if (confirmX >= 0 && confirmX < gridAmountX && confirmY >= 0 && confirmY < gridAmountY) {
 					neighbours.Add (grid [confirmX, confirmY]);
 
@@ -53,7 +54,7 @@ public class GridScript : MonoBehaviour {
 		float calcY = (position.z + gridWorldSize.y/2) / gridWorldSize.y;
 		calcX = Mathf.Clamp01 (calcX);
 		calcY = Mathf.Clamp01 (calcY);
-		Debug.Log (calcX);
+
 
 
 		int valueX = Mathf.RoundToInt((gridAmountX - 1) * calcX);
@@ -86,8 +87,6 @@ public class GridScript : MonoBehaviour {
 		}
 
 	}
-
-
 
 
 	void OnDrawGizmos() {

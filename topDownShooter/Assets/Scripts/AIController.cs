@@ -1,4 +1,4 @@
-﻿/*
+﻿
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +16,10 @@ public class AIController : MonoBehaviour {
 	public float BackwardsVelocity = 2f;
 	public float ForwardsVelocity = 6f;
 	public float SidewaysVelocity = 4f;
+    public float rotationSpeed = 1f;
+    public float stopDistance = 1f;
+
+
 	//Local Variables
 	private Quaternion targetRotation; 
 	private float TimeStamp;
@@ -60,4 +64,3 @@ public class AIController : MonoBehaviour {
 
 	}
 }
-*/

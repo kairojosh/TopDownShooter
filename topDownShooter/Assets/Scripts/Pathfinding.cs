@@ -25,15 +25,20 @@ public class Pathfinding : MonoBehaviour {
 		List<Node> closedNodes = new List<Node> ();
 		openNodes.Add (startNode);
 
-		//Searches through all nodes to find the node with lowest fCost
+		//Searches through all open nodes to find the node with lowest fCost
 		while (openNodes.Count > 0) {
+
+            //Purely here for the first step
 			Node activeNode = openNodes [0];
+
+            //The slowest part of the whole code, it crashes it occasionally because it is so inefficient
 			for (int i = 1; i < openNodes.Count; i++) {
 				if (openNodes [i].fCost < activeNode.fCost || activeNode.fCost == openNodes [i].fCost && openNodes [i].hCost < activeNode.hCost) {
 					activeNode = openNodes [i];
 				}
 
 			}
+
 			openNodes.Remove (activeNode);
 			closedNodes.Add (activeNode);
 
@@ -68,10 +73,12 @@ public class Pathfinding : MonoBehaviour {
 
 
 	int FindHCost(Node node, Node endNode){
+ 
+
 		int xDistance = Mathf.Abs(node.gridX - endNode.gridX);
 		int yDistance = Mathf.Abs(node.gridY - endNode.gridY);
 		int Cost;
-
+        
 
 		if (xDistance > yDistance) {
 			Cost = 14 * yDistance + 10 * (xDistance - yDistance);
@@ -79,8 +86,8 @@ public class Pathfinding : MonoBehaviour {
 		} else {
 			Cost = 14 * xDistance + 10 * (yDistance - xDistance);
 		}
-		return Cost;
-
+        return Cost;
+     
 
 	}
 
