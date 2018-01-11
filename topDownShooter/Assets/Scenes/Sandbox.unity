@@ -108,6 +108,11 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &37530524 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4172368307676272, guid: 3b2259e13474acc4b87188d5205419ad,
+    type: 2}
+  m_PrefabInternal: {fileID: 438712202}
 --- !u!1001 &112461921
 Prefab:
   m_ObjectHideFlags: 0
@@ -908,7 +913,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   gridWorldSize: {x: 30, y: 30}
-  nodeDiameter: 0.25
+  nodeDiameter: 0.5
 --- !u!4 &981832340
 Transform:
   m_ObjectHideFlags: 0
@@ -933,6 +938,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8754a9d69f895954c9227e6263413498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AI: {fileID: 37530524}
+  player: {fileID: 1755436115}
 --- !u!1 &1178221375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,8 +1042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CameraTarget: {fileID: 1755436115}
-  cameraHeight: 30
-  lerpValue: 5
+  cameraHeight: 10
+  lerpValue: 1
 --- !u!1001 &1359948731
 Prefab:
   m_ObjectHideFlags: 0

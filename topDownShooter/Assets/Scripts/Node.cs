@@ -6,16 +6,25 @@ using UnityEngine;
 public class Node {
 
 	public bool inBounds;
+	public int gridX, gridY, parentX, parentY;
 	public Vector3 position;
-	public Vector3 parentPosition;
-	public int gCost, hCost, fCost;
-
-	//Instantiater Method, underscore before the identifier is convention, example of encapsulation
-	public Node(bool _inBounds, Vector3 _position) {
-		inBounds = _inBounds;
-		position = _position;
+	public Node parentNode;
+	public int gCost, hCost;
+	public int fCost {
+		get {
+			return gCost + hCost;
+		}
 
 	}
+	//Instantiater Method, underscore before the identifier is convention, example of encapsulation
+	public Node(bool _inBounds, Vector3 _position, int _gridX, int _gridY) {
+		inBounds = _inBounds;
+		position = _position;
+		gridX = _gridX;
+		gridY = _gridY;
+
+	}
+
 
 
 }
