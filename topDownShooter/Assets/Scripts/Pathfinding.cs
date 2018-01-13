@@ -7,6 +7,7 @@ public class Pathfinding : MonoBehaviour {
 	public Transform AI; 
 	public Transform player;
 
+<<<<<<< HEAD
 	void Update(){
 		FindPath (AI.position, player.position);
 	}
@@ -109,3 +110,10 @@ public class Pathfinding : MonoBehaviour {
 
 
 }
+=======
+
+
+
+
+}
+>>>>>>> d9125c4ed12eb89a7e82d1bc2a030b8e892e2186
